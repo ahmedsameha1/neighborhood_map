@@ -14,3 +14,11 @@ https://www.npmjs.com/package/google-maps-react
 https://stackoverflow.com/a/42877693 by: bora89.
 
 https://developers.google.com/maps/documentation/javascript/tutorial
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child
+
+https://stackoverflow.com/questions/306062/css3-selector-to-find-the-2nd-div-of-the-same-class
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+https://stackoverflow.com/a/24979148 by: Pebbl.

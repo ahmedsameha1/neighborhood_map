@@ -18,7 +18,9 @@ class Map extends React.Component {
     }
     render() {
         return (
-            <div ref="map" className="map">
+            <div className="map_container">
+                <div className="top_bar"></div>
+                <div ref="map" className="map"></div>
             </div>
         );
     }
