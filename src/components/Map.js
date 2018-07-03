@@ -19,7 +19,11 @@ class Map extends React.Component {
     render() {
         return (
             <div className="map_container">
-                <div className="top_bar"></div>
+                <div className="top_bar">
+                    <div className="hamburger"
+                        onClick={() => {this.props.toggle_side_bar()}}>☰</div>
+                    <h1>Neighborhood Map</h1>
+                </div>
                 <div ref="map" className="map"></div>
             </div>
         );
