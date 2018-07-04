@@ -1,7 +1,7 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
@@ -63,4 +63,33 @@ body,
 
 .side_bar_shown {
     width: 20%;
+}
+
+@media screen and ( max-width: 700px ) {
+    .side_bar_shown {
+        width: 40%
+    }
+
+    .app>:nth-child(2) {
+        width: 60%
+    }
+}
+
+@media screen and ( max-width: 550px ) {
+    .side_bar_shown {
+        width: 50%
+    }
+
+    .app>:nth-child(2) {
+        width: 50%
+    }
+}
+@media screen and ( max-width: 400px ) {
+    .side_bar_shown {
+        width: 60%
+    }
+
+    .app>:nth-child(2) {
+        width: 40%
+    }
 }
