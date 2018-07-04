@@ -34,3 +34,11 @@ https://github.com/ahmedsameha1/book_tracking_app
 https://github.com/ahmedsameha1/book_tracking_app/blob/master/src/components/PopUp.js
 
 https://github.com/ahmedsameha1/book_tracking_app/blob/master/src/components/Book.js
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+
+https://stackoverflow.com/a/5734202 by: Ross.
+
+https://stackoverflow.com/a/775099 by: Pras.
+
+https://stackoverflow.com/a/20827604 by: DaniP.
