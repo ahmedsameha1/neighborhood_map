@@ -5,12 +5,18 @@ import ReactDOM from "react-dom";
 class Map extends React.Component {
     load_map() {
         if ( this.props && this.props.google ) {
-            new this.props.google.maps.Map(
+            let map = new this.props.google.maps.Map(
                 ReactDOM.findDOMNode(this.refs.map),
                 {
-                    center: { lat: 2, lng: 11},
-                    zoom: 4,
+                    center: { lat: 37.345353, lng: -122.0465131},
+                    zoom: 10,
                 });
+                let markers = this.props.locs.map(loc => new this.props.google.maps.Marker({
+                    position: loc.coord,
+                    map: map,
+                    title: loc.name}
+                ));
+                this.props.map_markers(map, markers);
         }
     }
     componentDidMount(){

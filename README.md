@@ -42,3 +42,33 @@ https://stackoverflow.com/a/5734202 by: Ross.
 https://stackoverflow.com/a/775099 by: Pras.
 
 https://stackoverflow.com/a/20827604 by: DaniP.
+
+https://github.com/ahmedsameha1/neighborhoodMap/blob/master/src/Map.js
+
+https://github.com/bacioana/neighborhoodMap/blob/master/src/Map.js
+
+https://www.google.com/maps
+
+https://github.com/ahmedsameha1/book_tracking_app/blob/master/src/components/Grid.js
+
+https://github.com/ahmedsameha1/book_tracking_app/blob/master/src/components/Search.js
+
+https://developers.google.com/maps/documentation/javascript/markers
+
+https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=geosearch
+
+https://tools.wmflabs.org/geohack/geohack.php
+
+https://www.mediawiki.org/wiki/API:Showing_nearby_wiki_information
+
+https://en.wikipedia.org/wiki/
+
+https://stackoverflow.com/a/9594181 by: Ben Regenspan.
+
+https://stackoverflow.com/a/12696051 by: Shmiddty.
+
+https://stackoverflow.com/a/8993788 by: Rob W.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+
