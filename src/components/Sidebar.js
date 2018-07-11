@@ -25,7 +25,8 @@ class Sidebar extends React.Component {
                 <input type="input" placeholder="filter" value={this.state.search_string}
                 onChange={this.search_string_change}/>
                 <div>
-                {this.state.locs.map(loc => <div key={loc.name}>{loc.name}</div>)}
+                {this.state.locs.map(loc => <div key={loc.name}
+                    onClick={() => {this.props.location_click(loc)}} className={ loc.clicked? "location clicked": "location" }>{loc.name}</div>)}
                 </div>
             </div>
         );

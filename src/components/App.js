@@ -8,75 +8,175 @@ class App extends Component {
         super(props);
         this.state = {
             side_bar_shown: true,
-            fil_locs: this.data
+            locations: [{
+                name: "Oracle Corporation",
+                coord: {
+                    lat: 37.5294,
+                    lng: -122.265966
+                },
+                info: null,
+                clicked: false,
+            },
+            {
+                name: "Mozilla Foundation",
+                coord: {
+                    lat: 37.38792,
+                    lng: -122.08284
+                },
+                info: null,
+                clicked: false,
+            },
+            {
+                name: "Intel",
+                coord: {
+                    lat: 37.387927777778,
+                    lng: -121.96353888889
+                },
+                info: null,
+                clicked: false,
+            },
+            {
+                name: "Googleplex",
+                coord: {
+                    lat: 37.422,
+                    lng: -122.084
+                },
+                info: null,
+                clicked: false,
+            },
+            {
+                name: "Cisco Systems",
+                coord: {
+                    lat: 37.4083562,
+                    lng: -121.954088
+                },
+                info: null,
+                clicked: false,
+            },
+            ],
+            error: false,
         }
     }
+    google = null;
     markers = null;
     map = null;
-    set_map_markers = (map, markers) => {
+    info_window = null;
+    map_loaded = false;
+    set_map_markers = (map, markers,google) => {
         this.map = map;
-        this.markers = markers
+        this.markers = markers;
+        this.google = google;
+        this.info_window = new google.maps.InfoWindow();
+        this.map_loaded = true;
+        this.setState({error: false});
     };
     filter_markers = (filtered) => {
-        if ( filtered == null ){
-            this.markers.forEach( marker => { marker.setVisible(true) });
-        }
-        else if ( filtered.length > 0 ) {
-            this.markers.forEach( marker => { marker.setVisible(false) });
-            this.markers.filter( marker => marker.getTitle().toLowerCase() === filtered[0].name.toLowerCase() )[0].setVisible(true);
+        if ( this.map_loaded ) {
+            if ( filtered == null ){
+                this.markers.forEach( marker => { marker.setVisible(true) });
+            }
+            else if ( filtered.length > 0 ) {
+                this.markers.forEach( marker => { marker.setVisible(false) });
+                this.markers.filter( marker => marker.getTitle().toLowerCase() === filtered[0].name.toLowerCase() )[0].setVisible(true);
+            } else {
+                this.markers.forEach( marker => { marker.setVisible(false) });
+            }
         } else {
-            this.markers.forEach( marker => { marker.setVisible(false) });
+            this.setState({error: true });
         }
     };
-    data = [{
-        name: "Oracle Corporation",
-        coord: {
-            lat: 37.5294,
-            lng: -122.265966
-        }
-    },
-    {
-        name: "Mozilla Foundation",
-        coord: {
-            lat: 37.38792,
-            lng: -122.08284
-        }
-    },
-    {
-        name: "Intel",
-        coord: {
-            lat: 37.387927777778,
-            lng: -121.96353888889
-        }
-    },
-    {
-        name: "Googleplex",
-        coord: {
-            lat: 37.422,
-            lng: -122.084
-        }
-    },
-    {
-        name: "Cisco Systems",
-        coord: {
-            lat: 37.4083562,
-            lng: -121.954088
-        }
-    },
-    ];
     toggle_side_bar = () => {
         this.setState({
             side_bar_shown: !this.state.side_bar_shown
         });
     }
 
+    marker_clicked = (marker) => {
+        if ( this.map_loaded ) {
+            const location = this.state.locations.filter(location => location.name === marker.getTitle() )[0];
+            if ( marker.getAnimation() !== null ) {
+                marker.setAnimation(null);
+                this.info_window.close();
+                location.clicked = false;
+            } else {
+                this.markers_stop_animation();
+                marker.setAnimation(this.google.maps.Animation.BOUNCE);
+                if( location.info ) {
+                    this.info_window.setContent(
+                        `<h1>${location.info}
+                        </h1><h6>from: www.mediawiki.org</h6>`);
+                } else if ( location.info === false) {
+                    this.info_window.setContent("<h6>Error while getting data</h6>");
+                } else if ( location.info === null) {
+                    this.info_window.setContent("<h4>Waiting for data...</h4>");
+                }
+                this.info_window.open(this.map, marker);
+                if ( location.info === null ) {
+                    setTimeout( () => {this.info_window.close() }, 1500);
+                }
+                location.clicked = true;
+            }
+            this.setState({});
+        } else {
+            this.setState({error: true });
+        }
+    };
+
+    markers_stop_animation = () => {
+        if ( this.map_loaded ) {
+            this.markers.forEach( marker => {
+                marker.setAnimation(null);
+            })
+            this.state.locations.forEach( location => {
+                location.clicked = false;
+            })
+        } else {
+            this.setState({error: true });
+        }
+    };
+    location_clicked = (location) => {
+        if ( this.map_loaded ) {
+            location.clicked = !location.clicked;
+            this.setState({});
+            this.marker_clicked(
+                this.markers.filter( marker => marker.getTitle() === location.name )[0]);
+        } else {
+            this.setState({error: true});
+        }
+    };
+    create_url = (coord) => {
+        // This "/w/api.php?action=query&format=json&list=geosearch&gscoord=37.5294%7C-122.265966&gslimit=1" is copied
+        // from: https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&format=json&list=geosearch&gscoord=37.5294%7C-122.265966&gslimit=1
+        // The origin=* parameter was added after seeing the code here: https://github.com/ahmedsameha1/neighborhoodMap/blob/master/src/Map.js line: 82
+        return "https://en.wikipedia.org/w/api.php?action=query&format=json&list=geosearch&gscoord=" + coord.lat + "%7C" + coord.lng + "&gslimit=1&origin=*"
+    };
+    componentDidMount() {
+        this.state.locations.forEach((location, index, array) => {
+            fetch(this.create_url(location.coord)).then(response => {
+                if ( response.ok ){
+                    return response.json();
+                }
+                throw new Error("Error, response isn't ok");
+            })
+            .then(data => {
+                location.info = data.query.geosearch[0].title
+            })
+            .catch(error => {
+                location.info = false;
+            })
+        })
+    };
     render() {
         return (
+            <div className="app_container">
             <div className="app">
             <Sidebar side_bar_shown={this.state.side_bar_shown}
-            locs={this.state.fil_locs} filter={this.filter_markers} />
-            <Map toggle_side_bar={this.toggle_side_bar} locs={this.state.fil_locs}
-            map_markers={this.set_map_markers}/>
+            locs={this.state.locations} filter={this.filter_markers}
+            location_click={this.location_clicked}/>
+            <Map toggle_side_bar={this.toggle_side_bar} locs={this.state.locations}
+            map_markers={this.set_map_markers} marker_click={this.marker_clicked}/>
+            </div>
+                {this.state.error && <div className="error">Error</div>}
             </div>
         );
     }

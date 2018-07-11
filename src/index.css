@@ -37,12 +37,13 @@ body,
     flex: 1;
     line-height: 100%;
     text-align: center;
+    font-size: 3vw;
 }
 
 .hamburger {
     line-height: 100%;
-    padding: 1rem;
-    margin: 0.3rem;
+    padding: 1.5vw;
+    margin: 0.5vw;
     font-size: 1.4rem;
     user-select: none;
 }
@@ -50,11 +51,18 @@ body,
 .app {
     height: 100%;
     display: flex;
+    flex-grow: 1;
+}
+
+.app_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .side_bar {
     flex-basis: auto;
-    background-color: brown;
+    background-color: gray;
 }
 
 .side_bar_hidden {
@@ -71,6 +79,23 @@ input {
     height: 6%;
     padding: 0.5rem;
     margin: 2.5% auto;
+}
+
+.clicked {
+    color: #ffffff;
+}
+
+.location {
+    margin: 1rem;
+    user-select: none;
+}
+
+.error {
+    height: 2rem;
+    background-color: #ff0000;
+    color: #ffffff;
+    text-align: center;
+    line-height: 2rem;
 }
 
 @media screen and ( max-width: 700px ) {

@@ -14,9 +14,15 @@ class Map extends React.Component {
                 let markers = this.props.locs.map(loc => new this.props.google.maps.Marker({
                     position: loc.coord,
                     map: map,
+                    animation: this.props.google.maps.Animation.DROP,
                     title: loc.name}
                 ));
-                this.props.map_markers(map, markers);
+                markers.forEach(marker => {
+                    marker.addListener("click", () => {
+                        this.props.marker_click(marker);
+                    });
+                });
+                this.props.map_markers(map, markers, this.props.google);
         }
     }
     componentDidMount(){
