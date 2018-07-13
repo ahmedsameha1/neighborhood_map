@@ -1,19 +1,42 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+This app uses: https://www.mediawiki.org/wiki/API:Showing_nearby_wiki_information
 
-//////////////////////  must add google-maps-react on how to setup   ///////////////////////////////////
+HOW TO RUN
+==========
+
+Install npm https://www.npmjs.com/get-npm
+
+Download the zip file of this repository.
+
+Extract the zip file.
+
+Using the command line, go to the extracted directory.
+
+Run: npm install
+
+Run: npm install -save google-maps-react
+
+Run: npm install -g serve 
+
+Run: npm run build
+
+Run: serve -s build
+
+Open localhost:5000 using your browser.
+
 ATTRIBUTIONS
 ============
 
 This app uses: https://cloud.google.com/maps-platform/
-
-This app uses: https://www.mediawiki.org/wiki/API:Showing_nearby_wiki_information
 
 https://medium.com/front-end-hacking/simplified-google-maps-api-in-a-react-app-46981441d2c9
 
 https://www.google.com.eg/
 
 https://www.npmjs.com/package/google-maps-react
+
+https://github.com/fullstackreact/google-maps-react
 
 https://stackoverflow.com/a/42877693 by: bora89.
 
@@ -92,3 +115,13 @@ https://www.mediawiki.org/wiki/API:Cross-site_requests
 https://stackoverflow.com/a/1917233 by: Tor Valamo.
 
 https://www.w3schools.com/howto/howto_css_responsive_text.asp
+
+https://stackoverflow.com/a/45746348 by: itacode.
+
+https://review.udacity.com/#!/reviews/1230833
+
+https://github.com/ahmedsameha1/book_tracking_app
+
+https://github.com/facebook/create-react-app
+
+After running npm run build finishes it show the command: serve -s build

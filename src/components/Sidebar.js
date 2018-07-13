@@ -8,11 +8,14 @@ class Sidebar extends React.Component {
             locs: this.props.locs,
         }
     }
+    // Input change handler
     search_string_change = (event) => {
         const value = event.target.value;
         this.setState({ search_string: value});
+        // Filter locations
         const filtered = this.props.locs.filter( loc => loc.name.toLowerCase().indexOf(value.toLowerCase()) === 0);
         if ( value !== "" ) {
+            // Run the filteration handler on the App component
             this.props.filter(filtered);
         } else {
             this.props.filter(null);
@@ -25,7 +28,7 @@ class Sidebar extends React.Component {
                 <input type="input" placeholder="filter" value={this.state.search_string}
                 onChange={this.search_string_change}/>
                 <div>
-                {this.state.locs.map(loc => <div key={loc.name}
+                {this.state.locs.map(loc => <div key={loc.name} role="button" aria-label="location"
                     onClick={() => {this.props.location_click(loc)}} className={ loc.clicked? "location clicked": "location" }>{loc.name}</div>)}
                 </div>
             </div>
