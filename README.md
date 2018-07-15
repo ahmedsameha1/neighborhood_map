@@ -125,3 +125,5 @@ https://github.com/ahmedsameha1/book_tracking_app
 https://github.com/facebook/create-react-app
 
 After running npm run build finishes it show the command: serve -s build
+
+https://stackoverflow.com/a/39767963 by: Shubham Khatri.

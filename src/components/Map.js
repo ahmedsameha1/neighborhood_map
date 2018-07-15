@@ -49,7 +49,29 @@ class Map extends React.Component {
     }
 }
 
+class Loading extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            time: 0,
+        }
+    }
+    componentDidMount(){
+        setTimeout(()=> {if(this.mounted) {this.setState({time: 3})}}, 3000 );
+        this.mounted = true;
+    }
+    componentWillUnmount() {
+        this.mounted = false;
+    }
+    render() {
+        return (
+            <div className="loading">{ this.state.time === 0? "Loading" : "Error while loading"}</div>
+        );
+    }
+}
 export default GoogleApiWrapper(
     // To make the Maps api works
-    { apiKey: "AIzaSyDcvTtkitnRqPDCyhTVrmyceRUHgiToN24", }
+    { apiKey: "AIzaSyDcvTtkitnRqPDCyhTVrmyceRUHgiToN24",
+        LoadingContainer: Loading,
+    }
 )(Map);
