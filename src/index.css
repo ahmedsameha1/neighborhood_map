@@ -27,8 +27,8 @@ body,
 }
 
 .top_bar {
-    height: 7.5%;
-    line-height: 7.5%;
+    height: 100%;
+    line-height: 100%;
     display: flex;
     align-items: center;
 }

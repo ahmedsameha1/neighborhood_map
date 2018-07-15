@@ -15,9 +15,7 @@ Using the command line, go to the extracted directory.
 
 Run: npm install
 
-Run: npm install -save google-maps-react
-
-Run: npm install -g serve 
+Run: npm install -g serve
 
 Run: npm run build
 
