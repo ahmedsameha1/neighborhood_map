@@ -208,7 +208,7 @@ class App extends Component {
             <Map toggle_side_bar={this.toggle_side_bar} locs={this.state.locations}
             map_markers={this.set_map_markers} marker_click={this.marker_clicked}/>
             </div>
-                {this.state.error && <div className="error" aria-label="error indicator">Error while loading</div>}
+                {this.state.error && <div className="error" aria-label="error indicator">Error</div>}
             </div>
         );
     }

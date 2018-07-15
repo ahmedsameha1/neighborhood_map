@@ -57,7 +57,7 @@ class Loading extends React.Component {
         }
     }
     componentDidMount(){
-        setTimeout(()=> {if(this.mounted) {this.setState({time: 3})}}, 3000 );
+        setTimeout(()=> {if(this.mounted) {this.setState({time: 3})}}, 5000 );
         this.mounted = true;
     }
     componentWillUnmount() {
@@ -65,7 +65,7 @@ class Loading extends React.Component {
     }
     render() {
         return (
-            <div className="loading">{ this.state.time === 0? "Loading" : "Error while loading"}</div>
+            <div className="loading">{ this.state.time === 0? "Loading" : "A problem while loading"}</div>
         );
     }
 }
