@@ -197,6 +197,7 @@ class App extends Component {
                 location.info = false;
             })
         })
+        window.gm_authFailure = () => { alert("Error with the map");};
     };
     render() {
         return (
