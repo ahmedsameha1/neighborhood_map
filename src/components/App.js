@@ -8,52 +8,7 @@ class App extends Component {
         super(props);
         this.state = {
             side_bar_shown: true,
-            locations: [{
-                name: "Oracle Corporation",
-                coord: {
-                    lat: 37.5294,
-                    lng: -122.265966
-                },
-                info: null,
-                clicked: false,
-            },
-            {
-                name: "Mozilla Foundation",
-                coord: {
-                    lat: 37.38792,
-                    lng: -122.08284
-                },
-                info: null,
-                clicked: false,
-            },
-            {
-                name: "Intel",
-                coord: {
-                    lat: 37.387927777778,
-                    lng: -121.96353888889
-                },
-                info: null,
-                clicked: false,
-            },
-            {
-                name: "Googleplex",
-                coord: {
-                    lat: 37.422,
-                    lng: -122.084
-                },
-                info: null,
-                clicked: false,
-            },
-            {
-                name: "Cisco Systems",
-                coord: {
-                    lat: 37.4083562,
-                    lng: -121.954088
-                },
-                info: null,
-                clicked: false,
-            },
-            ],
+            locations: this.props.locations,
             error: false,
         }
     }
