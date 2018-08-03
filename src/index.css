@@ -63,10 +63,11 @@ body,
 .side_bar {
     flex-basis: auto;
     background-color: gray;
+    transition: width 0.5s;
 }
 
 .side_bar_hidden {
-    display: none;
+    width: 0;
 }
 
 .side_bar_shown {
