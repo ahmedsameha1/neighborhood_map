@@ -64,6 +64,7 @@ body,
     flex-basis: auto;
     background-color: gray;
     transition: width 0.5s;
+    overflow: hidden;
 }
 
 .side_bar_hidden {
