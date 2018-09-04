@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './../App.css';
 import Map from "./Map";
 import Sidebar from "./Sidebar";
+import PropTypes from "prop-types";
 
 class App extends Component {
     constructor(props) {
@@ -168,6 +169,15 @@ class App extends Component {
             </div>
         );
     }
+}
+
+App.propTypes = {
+    locations: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        coord: PropTypes.object.isRequired,
+        info: PropTypes.object,
+        clicked: PropTypes.bool.isRequired,
+    })).isRequired,
 }
 
 export default App;

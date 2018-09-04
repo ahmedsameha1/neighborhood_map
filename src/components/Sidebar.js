@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -34,6 +34,18 @@ class Sidebar extends React.Component {
             </div>
         );
     }
+}
+
+Sidebar.propTypes = {
+    locs: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        coord: PropTypes.object.isRequired,
+        info: PropTypes.object,
+        clicked: PropTypes.bool.isRequired,
+    })).isRequired,
+    filter: PropTypes.func.isRequired,
+    side_bar_shown: PropTypes.bool.isRequired,
+    location_click: PropTypes.func.isRequired,
 }
 
 export default Sidebar;

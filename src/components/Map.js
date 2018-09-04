@@ -1,6 +1,7 @@
 import React from "react";
 import { GoogleApiWrapper } from "google-maps-react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 
 class Map extends React.Component {
     // Show the map and the markers
@@ -68,6 +69,19 @@ class Loading extends React.Component {
             <div className="loading">{ this.state.time === 0? "Loading" : "A problem while loading"}</div>
         );
     }
+}
+
+Map.propTypes = {
+    google: PropTypes.object.isRequired,
+    locs: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        coord: PropTypes.object.isRequired,
+        info: PropTypes.object,
+        clicked: PropTypes.bool.isRequired,
+    })).isRequired,
+    marker_click: PropTypes.func.isRequired,
+    map_markers: PropTypes.func.isRequired,
+    toggle_side_bar: PropTypes.func.isRequired,
 }
 export default GoogleApiWrapper(
     // To make the Maps api works
